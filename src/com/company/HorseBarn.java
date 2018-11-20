@@ -22,20 +22,22 @@ public class HorseBarn {
             return -1;
         }
 
-        public void consolidate() {
-            for (int i = 0; i < this.spaces.length - 1; i++) {
-                if (this.spaces[i] == null) {
-                    for (int j = i + 1; j < this.spaces.length; j++) {
-                        if (this.spaces[j] != null) {
-                            this.spaces[i] = this.spaces[j];
-                            this.spaces[j] = null;
-                            j = this.spaces.length;
-                        }
-                    }
+        public void consolidate()
+        {
+            Horse[] newSpaces = new Horse[spaces.length];
+            int newIndex = 0;
+
+            for(int oldIndex = 0; oldIndex < spaces.length; oldIndex++)
+            {
+                if(spaces[oldIndex] != null)
+                {
+                    newSpaces[newIndex] = spaces[oldIndex];
+                    newIndex++;
                 }
             }
+
+            spaces = newSpaces;
         }
-    }
 
     public String toString() {
         String total = "";
